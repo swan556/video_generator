@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/swan/Documents/py_files/video_generator/media/videos/1920p60/partial_movie_files/generator/1862940534_383719300_297951856.mp4'
+file 'file:/home/swan/Documents/py_files/video_generator/media/videos/1920p60/partial_movie_files/generator/1862940534_3818634548_363105680.mp4'
+file 'file:/home/swan/Documents/py_files/video_generator/media/videos/1920p60/partial_movie_files/generator/1862940534_2844360058_2894503747.mp4'

@@ -1,0 +1,4 @@
+We can define our own debug function using the define preprocessor directive!
+Look at the code below:
+
+Also, since we are using cerr instead of cout, the output will not be printed in competetive programming websites like code forces!

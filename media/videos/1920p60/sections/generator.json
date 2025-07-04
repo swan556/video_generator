@@ -1,0 +1,38 @@
+[
+    {
+        "name": "hook",
+        "type": "default.normal",
+        "video": "generator_0000_hook.mp4",
+        "width": 1080,
+        "height": 1920,
+        "nb_frames": "482",
+        "duration": "8.033333",
+        "avg_frame_rate": "60/1",
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p"
+    },
+    {
+        "name": "title",
+        "type": "default.normal",
+        "video": "generator_0001_title.mp4",
+        "width": 1080,
+        "height": 1920,
+        "nb_frames": "201",
+        "duration": "3.350000",
+        "avg_frame_rate": "60/1",
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p"
+    },
+    {
+        "name": "body",
+        "type": "default.normal",
+        "video": "generator_0002_body.mp4",
+        "width": 1080,
+        "height": 1920,
+        "nb_frames": "1046",
+        "duration": "17.433333",
+        "avg_frame_rate": "60/1",
+        "codec_name": "h264",
+        "pix_fmt": "yuv420p"
+    }
+]
