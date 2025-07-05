@@ -10,7 +10,7 @@ from moviepy.editor import *
 
 class generator(Scene):
 
-    def __init__(self, hook_code, title, body, main_code, run_times, **kwargs):
+    def __init__(self, hook_code, title, body, main_code, run_times, language_name, **kwargs):
         
         super().__init__(**kwargs)
 
@@ -33,6 +33,8 @@ class generator(Scene):
         self.main_code = main_code # string(location)
         self.run_times = run_times # list of three runtimes (hook, title ,body)
 
+        self.ln = language_name
+
     def construct(self):
 
         # defining mobjects
@@ -46,7 +48,7 @@ class generator(Scene):
         _hook_code = Code(
             f"{self.hook_code}",
             tab_width=7,
-            language=str(((self.hook_code).split("."))[-1]),
+            language=self.ln,
             background="rectangle",
             background_config={"fill_color": "#141414", "stroke_opacity": 0},
             paragraph_config={"font": "monospace"},
@@ -78,7 +80,7 @@ class generator(Scene):
         _main_code = Code(
             f"{self.main_code}",
             tab_width=7,
-            language=str(((self.main_code).split("."))[-1]),
+            language=self.ln,
             background="window",
             background_config={"fill_color": "#1A1A1A", "stroke_opacity": 0},
             paragraph_config={"font": "monospace"},
@@ -159,7 +161,7 @@ def main():
 
     # get video id
     with open("./temp_files/cwf.txt", "r", encoding="utf-8") as f:
-        video_id = str(f.read())
+        video_id = str(f.read()).lower()
 
     with open(f"./temp_files/{video_id}/title.txt", "r", encoding="utf-8") as f:
         title = f.read()
@@ -168,10 +170,11 @@ def main():
     with open(f"./temp_files/{video_id}/body.txt", "r", encoding="utf-8") as f:
         body = f.read()
     with open(f"./temp_files/{video_id}/file_extension.txt", "r", encoding="utf-8") as f:
-        file_ext = f.read()
+        file_ext = f.read().strip().split()
     
-    hook_code = f"./temp_files/{video_id}/hook_code.{file_ext}"
-    main_code = f"./temp_files/{video_id}/main_code.{file_ext}"
+    hook_code = f"./temp_files/{video_id}/hook_code.{file_ext[0]}"
+    main_code = f"./temp_files/{video_id}/main_code.{file_ext[0]}"
+    language_name = file_ext[1]
     
     print("-------------------------------------------------")
     print(title)
@@ -198,7 +201,8 @@ def main():
             title, 
             body, 
             main_code, 
-            generate_audios([hook, title, body])
+            generate_audios([hook, title, body]),
+            language_name
             )
         scene.render()
 

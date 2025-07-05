@@ -1,0 +1,1 @@
+Trying to compare two values in an `if` statement? Good luck — if you accidentally use `=`, you’re not comparing, you're assigning. And C++ is like, “Yeah sure, I’ll run with that.” No errors. Just betrayal.

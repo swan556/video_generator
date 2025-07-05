@@ -19,15 +19,30 @@ button_color = "#4CAF50"
 root.configure(bg=bg_color)
 
 # ------------------------ LANGUAGE OPTIONS ------------------------
-LANGUAGES = ["python", "c++", "c", "java", "html", "css", "javascript", "bash",
-             "go", "rust", "typescript", "kotlin", "swift", "php", "sql"]
+LANGUAGES = [
+    "py python",
+    "cpp c++",
+    "c c",
+    "java java",
+    "html html",
+    "css css",
+    "js javascript",
+    "sh bash",
+    "go go",
+    "rs rust",
+    "ts typescript",
+    "kt kotlin",
+    "swift swift",
+    "php php",
+    "sql sql"
+]
 selected_language = tk.StringVar()
 selected_language.set(LANGUAGES[0])  # default
 
 def run_manim(title):
     with open("./temp_files/cwf.txt", "w", encoding="utf-8") as f:
         f.write("_".join(title.split()))
-    
+
     status_label_2.config(text="Running Manim...")
     root.update()
     python_path = "./venv/bin/python"
@@ -38,7 +53,7 @@ def run_manim(title):
 def sanitize_title(title):
     return title.strip().lower().replace(" ", "_")
 
-def create_files(hook, hook_code, title, body, main_code, lang_ext):
+def create_files(hook, hook_code, title, body, main_code, lang_ext, lang_name):
     session_id = sanitize_title(title)
     base_path = f"./temp_files/{session_id}/"
     os.makedirs(base_path, exist_ok=True)
@@ -59,7 +74,7 @@ def create_files(hook, hook_code, title, body, main_code, lang_ext):
         f.write(main_code)
 
     with open(base_path + f"file_extension.txt", "w", encoding="utf-8") as f:
-        f.write(lang_ext)
+        f.write(f"{lang_ext} {lang_name}")
 
 def load_session():
     try:
@@ -86,7 +101,11 @@ def load_session():
         title = try_read("title.txt")
         body = try_read("body.txt")
         hook = try_read("hook.txt")
-        ext = try_read("file_extension.txt")
+        ext_line = try_read("file_extension.txt")
+        if not ext_line:
+            status_label.config(text="Missing file_extension.txt", fg="red")
+            return
+        ext, lang_name = ext_line.split()
         main_code = try_read(f"main_code.{ext}")
         hook_code = try_read(f"hook_code.{ext}")
 
@@ -96,7 +115,7 @@ def load_session():
 
         reset_fields(skip_placeholders=True)
         title_entry.insert(0, title)
-        selected_language.set(ext)
+        selected_language.set(f"{ext} {lang_name}")
         hook_text.insert("1.0", hook)
         body_text.insert("1.0", body)
         hook_code_text.insert("1.0", hook_code)
@@ -237,13 +256,15 @@ def submit_action():
     body = body_text.get("1.0", tk.END).strip()
     hook_code = hook_code_text.get("1.0", tk.END).strip()
     main_code = main_code_text.get("1.0", tk.END).strip()
-    lang_ext = selected_language.get()
+    
+    lang_full = selected_language.get()
+    lang_ext, lang_name = lang_full.split()
 
     if title == "" or title == "title":
         status_label.config(text="Please enter a valid title.", fg="red")
         return
 
-    create_files(hook, hook_code, title, body, main_code, lang_ext)
+    create_files(hook, hook_code, title, body, main_code, lang_ext, lang_name)
     status_label.config(text="Files created successfully.", fg="green")
 
     sleep(2)

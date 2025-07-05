@@ -1,0 +1,1 @@
+C++ switch statements don’t stop unless you tell them to — literally. Without a `break`, they fall through and keep executing the next cases. That’s why printing Tuesday also gave you Wednesday (and maybe a headache). Always break up with your cases, or your logic will break you.

@@ -5,8 +5,8 @@
         "video": "generator_0000_hook.mp4",
         "width": 1080,
         "height": 1920,
-        "nb_frames": "482",
-        "duration": "8.033333",
+        "nb_frames": "972",
+        "duration": "16.200000",
         "avg_frame_rate": "60/1",
         "codec_name": "h264",
         "pix_fmt": "yuv420p"
@@ -17,8 +17,8 @@
         "video": "generator_0001_title.mp4",
         "width": 1080,
         "height": 1920,
-        "nb_frames": "201",
-        "duration": "3.350000",
+        "nb_frames": "127",
+        "duration": "2.116667",
         "avg_frame_rate": "60/1",
         "codec_name": "h264",
         "pix_fmt": "yuv420p"
@@ -29,8 +29,8 @@
         "video": "generator_0002_body.mp4",
         "width": 1080,
         "height": 1920,
-        "nb_frames": "1046",
-        "duration": "17.433333",
+        "nb_frames": "1708",
+        "duration": "28.466667",
         "avg_frame_rate": "60/1",
         "codec_name": "h264",
         "pix_fmt": "yuv420p"

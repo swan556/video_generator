@@ -1,0 +1,1 @@
+You thought your switch-case was working perfectly... until it started behaving like it had a mind of its own. Turns out, C++ isn’t your babysitter — forget one `break`, and your logic goes full rollercoaster mode.

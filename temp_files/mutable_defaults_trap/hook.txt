@@ -1,0 +1,1 @@
+Many beginners think default list arguments in Python behave like fresh lists every time. But using mutable defaults like `[]` can cause unexpected behavior, especially when the function is called multiple times.

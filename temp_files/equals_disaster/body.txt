@@ -1,0 +1,1 @@
+In C++, `=` assigns a value, and `==` checks for equality. Mixing them up in an `if` is a rite of passage — and a debugging nightmare. The condition `x = 10` sets x to 10 and then checks if 10 is true (which it is), so the `if` always runs. Want a real comparison? Use `==`, or prepare to hunt bugs you literally wrote yourself.
