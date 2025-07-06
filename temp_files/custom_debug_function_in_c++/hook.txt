@@ -1,1 +1,0 @@
-Are you still using cout function for debugging? Let's take a look at how can we make our custom debug function in c++
