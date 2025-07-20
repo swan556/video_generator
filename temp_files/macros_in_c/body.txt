@@ -1,0 +1,1 @@
+# define is a preprocessor, and can define the statement in form of any variable. Take 'R' for return for example. Whenever we will write R in our code, the compiler will read it as 'return'. This ensures reusability for complex but small in length functions.

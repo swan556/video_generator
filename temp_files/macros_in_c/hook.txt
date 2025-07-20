@@ -1,0 +1,2 @@
+Want to take reusability on a whole new level?
+Macros can be used to assign any function or statement to a variable of your choice.

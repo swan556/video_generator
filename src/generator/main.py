@@ -1,3 +1,7 @@
+# disable this part before running:
+with open("my_cred.txt", "r", encoding="utf-8") as f:
+    info = f.read().split()
+
 ################################################### importing
 from manim import *
 from edge_tts import Communicate
@@ -120,19 +124,27 @@ def generate_audios(texts): # texts is a list of texts, including hook, title, b
     print("audio generation started")
 
     for name, text in zip(names, texts):
-        
+
         mp3_path = f"./temp_files/{name}.mp3"
         text = " ".join(text.split("\n"))
 
         async def generate_audio(text = text, mp3_path = mp3_path):
 
-            communicate = Communicate(text = text, voice = "en-IE-ConnorNeural")
+            communicate = Communicate(text = text, voice = "en-IE-ConnorNeural", proxy = f"{info[0]}:{info[1]}@http://14.139.41.191:80")
             await communicate.save(mp3_path)
 
         asyncio.run(generate_audio())
 
         audio = MP3(mp3_path)
         run_times.append(audio.info.length)
+
+    body_mp3 = "./temp_files/body.mp3"
+    silence_mp3 = "./temp_files/silence.mp3"
+    audio_body_file = AudioFileClip(body_mp3)
+    silence_audio_file = AudioFileClip(silence_mp3)
+
+    audio_body_file = concatenate_audioclips([silence_audio_file, audio_body_file])
+    audio_body_file.write_audiofile("./temp_files/body.mp3")
 
     print('audio generation ended')
     return run_times
