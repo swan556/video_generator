@@ -1,4 +1,4 @@
-#!/home/swan/Documents/py_files/video_generator/venv/bin/python3.11
+#!/home/swan/Documents/py_files/video_generator/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
